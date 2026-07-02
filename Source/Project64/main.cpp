@@ -71,7 +71,10 @@ int WINAPI WinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPSTR /
 
         if (!isROMLoaded)
         {
+            // Support dialog: can be disabled at compile time by defining DISABLE_SUPPORT_DIALOG
+#ifndef DISABLE_SUPPORT_DIALOG
             CSupportWindow(MainWindow.Support()).Show((HWND)MainWindow.GetWindowHandle(), true);
+#endif
             if (UISettingsLoadBool(RomBrowser_Enabled))
             {
                 WriteTrace(TraceUserInterface, TraceDebug, "Show ROM browser");
